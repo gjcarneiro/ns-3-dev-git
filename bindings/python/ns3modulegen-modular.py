@@ -61,14 +61,14 @@ def main(argv):
     logging.basicConfig()
     logging.getLogger("pybindgen.typehandlers").setLevel(logging.DEBUG)
 
-    module_abs_src_path, target, extension_name, output_cc_file_name = argv[1:]
+    module_abs_src_path, extension_name, output_cc_file_name = argv[1:]
     module_name = os.path.basename(module_abs_src_path)
     out = MyMultiSectionFactory(output_cc_file_name)
 
     sys.path.insert(0, os.path.join(module_abs_src_path, "bindings"))
     try:
-        module_apidefs = __import__("modulegen__%s" % target)
-        del sys.modules["modulegen__%s" % target]
+        module_apidefs = __import__("modulegen")
+        del sys.modules["modulegen"]
         try:
             module_customization = __import__("modulegen_customizations")
             del sys.modules["modulegen_customizations"]

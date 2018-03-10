@@ -34,7 +34,7 @@ class SmartPointerTransformation(typehandlers.TypeTransformation):
         m = self.rx.match(name)
         is_const = False
         if m is None:
-            print("{0!r} did not match".format(name), file=sys.stderr)
+            # print("{0!r} did not match".format(name), file=sys.stderr)
             return None, False
         else:
             name1 = m.group(2).strip()
