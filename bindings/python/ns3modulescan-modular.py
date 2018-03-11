@@ -61,21 +61,6 @@ class PreScanHook:
                  global_annotations,
                  parameter_annotations):
 
-        decl = pygccxml_definition.decl_string
-        if decl.startswith('::ns3::Callback'):
-            # manually handled in ns3modulegen_core_customizations.py
-            global_annotations['ignore'] = None
-            return
-        if decl.startswith('::ns3::TracedCallback'):
-            global_annotations['ignore'] = None
-            return
-        if decl.startswith('::ns3::Ptr<'):
-            # handled by pybindgen "type transformation"
-            global_annotations['ignore'] = None
-            return
-        if decl.startswith('::ns3::DefaultDeleter<'):
-            global_annotations['ignore'] = None
-            return
 
         # print("********************", pygccxml_definition.decl_string,
         #       file=sys.stderr)
@@ -113,13 +98,13 @@ class PreScanHook:
         if isinstance(pygccxml_definition, member_function_t) \
                 and pygccxml_definition.parent.name == 'Simulator' \
                 and pygccxml_definition.name.startswith('Schedule'):
-            global_annotations['ignore'] = None
+            global_annotations['ignore'] = "Don't wrap Simulator::Schedule* (manually wrapped)"
 
         # manually wrapped
         if isinstance(pygccxml_definition, member_function_t) \
                 and pygccxml_definition.parent.name == 'Simulator' \
                 and pygccxml_definition.name == 'Run':
-            global_annotations['ignore'] = True
+            global_annotations['ignore'] = "manually wrapped"
 
         ## http://www.gccxml.org/Bug/view.php?id=9915
         if isinstance(pygccxml_definition, calldef_t):
@@ -137,6 +122,22 @@ class PreScanHook:
             # no need for helper classes to allow subclassing in Python, I think...
             #if pygccxml_definition.name.endswith('Helper'):
             #    global_annotations['allow_subclassing'] = 'false'
+
+            decl = pygccxml_definition.decl_string
+            if decl.startswith('::ns3::Callback'):
+                # manually handled in ns3modulegen_core_customizations.py
+                global_annotations['ignore'] = "ns3 Callback"
+                return
+            if decl.startswith('::ns3::TracedCallback'):
+                global_annotations['ignore'] = "ns3::TracedCallback"
+                return
+            if decl.startswith('::ns3::Ptr<'):
+                # handled by pybindgen "type transformation"
+                global_annotations['ignore'] = "Ptr"
+                return
+            if decl.startswith('::ns3::DefaultDeleter<'):
+                global_annotations['ignore'] = "DefaultDeleter"
+                return
 
             #
             # If a class is template instantiation, even if the
@@ -235,7 +236,7 @@ def scan_callback_classes(module_parser, callback_classes_file):
 
 
 def ns3_module_scan(top_builddir, module_name, headers_map, output_file_name, cflags):
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.DEBUG)
     module_parser = ModuleParser('ns.%s' % module_name.replace('-', '_'), 'ns3')
     module_parser.add_pre_scan_hook(PreScanHook(headers_map, module_name))
     #module_parser.add_post_scan_hook(post_scan_hook)
