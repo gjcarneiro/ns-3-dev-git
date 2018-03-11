@@ -67,8 +67,8 @@ def main(argv):
 
     sys.path.insert(0, os.path.join(module_abs_src_path, "bindings"))
     try:
-        module_apidefs = __import__("modulegen")
-        del sys.modules["modulegen"]
+        module_apidefs = __import__("apidefs")
+        del sys.modules["apidefs"]
         try:
             module_customization = __import__("modulegen_customizations")
             del sys.modules["modulegen_customizations"]

@@ -26,6 +26,7 @@ SED_EXPR = (
     "s/long int|long long int/int64_t/g; s/short int|int short/int16_t/g; "
     "s/unsigned int short|unsigned short int|short unsigned int|"
     "unsigned short/uint16_t/g; "
+    "s/unsigned char/uint8_t/g; "
     "s/(unsigned int|int unsigned|unsigned)/uint32_t/g; s/'int'/'int32_t'/g;"
 )
 
@@ -339,7 +340,7 @@ class apiscan_task(Task.Task):
 
     def run(self):
         self.inputs = [self.bld.bldnode.find_resource("ns3/{0}-module.h".format(self.module))]
-        self.outputs = [self.bld.srcnode.make_node("src/{}/bindings/modulegen.py".format(self.module))]
+        self.outputs = [self.bld.srcnode.make_node("src/{}/bindings/apidefs.py".format(self.module))]
         top_builddir = self.bld.bldnode.abspath()
         module_path = get_module_path(self.bld, self.module)
         # headers_map = get_headers_map(self.bld)
@@ -349,7 +350,7 @@ class apiscan_task(Task.Task):
             Logs.error("Cannot apiscan module %r: %s does not exist" % (self.module, scan_header))
             return 0
 
-        output_file = os.path.join(module_path, "bindings", 'modulegen.py')
+        output_file = os.path.join(module_path, "bindings", 'apidefs.py')
         argv = [
             self.env['PYTHON'][0],
             os.path.join(self.curdirnode.abspath(), 'ns3modulescan-modular.py'), # scanning script
