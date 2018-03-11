@@ -42,28 +42,6 @@ def register_types(module):
     module.add_class('Iterator', import_from_module='ns.network', outer_class=root_module['ns3::ByteTagList'])
     ## byte-tag-list.h (module 'network'): ns3::ByteTagList::Iterator::Item [struct]
     module.add_class('Item', import_from_module='ns.network', outer_class=root_module['ns3::ByteTagList::Iterator'])
-    ## callback.h (module 'core'): ns3::CallbackBase [class]
-    module.add_class('CallbackBase', import_from_module='ns.core')
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeAccessor> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::AttributeAccessor'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeChecker> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::AttributeChecker'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeValue> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::AttributeValue'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::CallbackImplBase> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::CallbackImplBase'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::EventImpl> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::EventImpl'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::FlowClassifier> [struct]
-    module.add_class('DefaultDeleter', template_parameters=['ns3::FlowClassifier'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Hash::Implementation> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::Hash::Implementation'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::NixVector> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::NixVector'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Packet> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::Packet'])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::TraceSourceAccessor> [struct]
-    module.add_class('DefaultDeleter', import_from_module='ns.core', template_parameters=['ns3::TraceSourceAccessor'])
     ## event-id.h (module 'core'): ns3::EventId [class]
     module.add_class('EventId', import_from_module='ns.core')
     ## flow-monitor-helper.h (module 'flow-monitor'): ns3::FlowMonitorHelper [class]
@@ -106,6 +84,10 @@ def register_types(module):
     module.add_class('Mac48Address', import_from_module='ns.network')
     ## mac48-address.h (module 'network'): ns3::Mac48Address [class]
     root_module['ns3::Mac48Address'].implicitly_converts_to(root_module['ns3::Address'])
+    ## mac8-address.h (module 'network'): ns3::Mac8Address [class]
+    module.add_class('Mac8Address', import_from_module='ns.network')
+    ## mac8-address.h (module 'network'): ns3::Mac8Address [class]
+    root_module['ns3::Mac8Address'].implicitly_converts_to(root_module['ns3::Address'])
     ## node-container.h (module 'network'): ns3::NodeContainer [class]
     module.add_class('NodeContainer', import_from_module='ns.network')
     ## object-base.h (module 'core'): ns3::ObjectBase [class]
@@ -246,12 +228,6 @@ def register_types(module):
     module.add_class('AttributeChecker', allow_subclassing=False, automatic_type_narrowing=True, import_from_module='ns.core', parent=root_module['ns3::SimpleRefCount< ns3::AttributeChecker, ns3::empty, ns3::DefaultDeleter<ns3::AttributeChecker> >'])
     ## attribute.h (module 'core'): ns3::AttributeValue [class]
     module.add_class('AttributeValue', allow_subclassing=False, automatic_type_narrowing=True, import_from_module='ns.core', parent=root_module['ns3::SimpleRefCount< ns3::AttributeValue, ns3::empty, ns3::DefaultDeleter<ns3::AttributeValue> >'])
-    ## callback.h (module 'core'): ns3::CallbackChecker [class]
-    module.add_class('CallbackChecker', import_from_module='ns.core', parent=root_module['ns3::AttributeChecker'])
-    ## callback.h (module 'core'): ns3::CallbackImplBase [class]
-    module.add_class('CallbackImplBase', import_from_module='ns.core', parent=root_module['ns3::SimpleRefCount< ns3::CallbackImplBase, ns3::empty, ns3::DefaultDeleter<ns3::CallbackImplBase> >'])
-    ## callback.h (module 'core'): ns3::CallbackValue [class]
-    module.add_class('CallbackValue', import_from_module='ns.core', parent=root_module['ns3::AttributeValue'])
     ## attribute.h (module 'core'): ns3::EmptyAttributeAccessor [class]
     module.add_class('EmptyAttributeAccessor', import_from_module='ns.core', parent=root_module['ns3::AttributeAccessor'])
     ## attribute.h (module 'core'): ns3::EmptyAttributeChecker [class]
@@ -360,44 +336,18 @@ def register_types(module):
     module.add_class('AddressChecker', import_from_module='ns.network', parent=root_module['ns3::AttributeChecker'])
     ## address.h (module 'network'): ns3::AddressValue [class]
     module.add_class('AddressValue', import_from_module='ns.network', parent=root_module['ns3::AttributeValue'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['bool', 'ns3::Ptr<ns3::Socket>', 'const ns3::Address &', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['ns3::ObjectBase *', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'const ns3::Ipv4Header &', 'ns3::Ptr<const ns3::Packet>', 'ns3::Ipv4L3Protocol::DropReason', 'ns3::Ptr<ns3::Ipv4>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'const ns3::Ipv4Header &', 'ns3::Ptr<const ns3::Packet>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'const ns3::Ipv6Header &', 'ns3::Ptr<const ns3::Packet>', 'ns3::Ipv6L3Protocol::DropReason', 'ns3::Ptr<ns3::Ipv6>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'const ns3::Ipv6Header &', 'ns3::Ptr<const ns3::Packet>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<const ns3::Packet>', 'ns3::Ptr<ns3::Ipv4>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<const ns3::Packet>', 'ns3::Ptr<ns3::Ipv6>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<ns3::NetDevice>', 'ns3::Ptr<const ns3::Packet>', 'unsigned short', 'const ns3::Address &', 'const ns3::Address &', 'ns3::NetDevice::PacketType', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<ns3::NetDevice>', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<ns3::Socket>', 'const ns3::Address &', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<ns3::Socket>', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> [class]
-    module.add_class('CallbackImpl', import_from_module='ns.core', template_parameters=['void', 'ns3::Ptr<ns3::Socket>', 'unsigned int', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty', 'ns3::empty'], parent=root_module['ns3::CallbackImplBase'])
     ## queue-item.h (module 'network'): ns3::QueueDiscItem [class]
     module.add_class('QueueDiscItem', import_from_module='ns.network', parent=root_module['ns3::QueueItem'])
     module.add_container('std::vector< ns3::Ipv6Address >', 'ns3::Ipv6Address', container_type=u'vector')
-    module.add_container('std::vector< unsigned int >', 'unsigned int', container_type=u'vector')
-    module.add_container('std::vector< unsigned long >', 'long unsigned int', container_type=u'vector')
-    module.add_container('std::map< unsigned int, ns3::FlowMonitor::FlowStats >', ('unsigned int', 'ns3::FlowMonitor::FlowStats'), container_type=u'map')
+    module.add_container('std::vector< uint32_t >', 'uint32_t', container_type=u'vector')
+    module.add_container('std::vector< uint64_t >', 'uint64_t', container_type=u'vector')
+    module.add_container('std::map< uint32_t, ns3::FlowMonitor::FlowStats >', ('uint32_t', 'ns3::FlowMonitor::FlowStats'), container_type=u'map')
     module.add_container('std::vector< ns3::Ptr< ns3::FlowProbe > >', 'ns3::Ptr< ns3::FlowProbe >', container_type=u'vector')
-    module.add_container('std::map< unsigned int, ns3::FlowProbe::FlowStats >', ('unsigned int', 'ns3::FlowProbe::FlowStats'), container_type=u'map')
-    module.add_container('ns3::FlowProbe::Stats', ('unsigned int', 'ns3::FlowProbe::FlowStats'), container_type=u'map')
-    module.add_container('std::vector< std::pair< ns3::Ipv4Header::DscpType, unsigned int > >', 'std::pair< ns3::Ipv4Header::DscpType, unsigned int >', container_type=u'vector')
-    module.add_container('std::map< unsigned int, unsigned int >', ('unsigned int', 'unsigned int'), container_type=u'map')
-    module.add_container('std::vector< std::pair< ns3::Ipv6Header::DscpType, unsigned int > >', 'std::pair< ns3::Ipv6Header::DscpType, unsigned int >', container_type=u'vector')
+    module.add_container('std::map< uint32_t, ns3::FlowProbe::FlowStats >', ('uint32_t', 'ns3::FlowProbe::FlowStats'), container_type=u'map')
+    module.add_container('ns3::FlowProbe::Stats', ('uint32_t', 'ns3::FlowProbe::FlowStats'), container_type=u'map')
+    module.add_container('std::vector< std::pair< ns3::Ipv4Header::DscpType, uint32_t > >', 'std::pair< ns3::Ipv4Header::DscpType, uint32_t >', container_type=u'vector')
+    module.add_container('std::map< uint32_t, uint32_t >', ('uint32_t', 'uint32_t'), container_type=u'map')
+    module.add_container('std::vector< std::pair< ns3::Ipv6Header::DscpType, uint32_t > >', 'std::pair< ns3::Ipv6Header::DscpType, uint32_t >', container_type=u'vector')
     typehandlers.add_type_alias(u'uint32_t', u'ns3::FlowId')
     typehandlers.add_type_alias(u'uint32_t*', u'ns3::FlowId*')
     typehandlers.add_type_alias(u'uint32_t&', u'ns3::FlowId&')
@@ -475,17 +425,6 @@ def register_methods(root_module):
     register_Ns3ByteTagList_methods(root_module, root_module['ns3::ByteTagList'])
     register_Ns3ByteTagListIterator_methods(root_module, root_module['ns3::ByteTagList::Iterator'])
     register_Ns3ByteTagListIteratorItem_methods(root_module, root_module['ns3::ByteTagList::Iterator::Item'])
-    register_Ns3CallbackBase_methods(root_module, root_module['ns3::CallbackBase'])
-    register_Ns3DefaultDeleter__Ns3AttributeAccessor_methods(root_module, root_module['ns3::DefaultDeleter< ns3::AttributeAccessor >'])
-    register_Ns3DefaultDeleter__Ns3AttributeChecker_methods(root_module, root_module['ns3::DefaultDeleter< ns3::AttributeChecker >'])
-    register_Ns3DefaultDeleter__Ns3AttributeValue_methods(root_module, root_module['ns3::DefaultDeleter< ns3::AttributeValue >'])
-    register_Ns3DefaultDeleter__Ns3CallbackImplBase_methods(root_module, root_module['ns3::DefaultDeleter< ns3::CallbackImplBase >'])
-    register_Ns3DefaultDeleter__Ns3EventImpl_methods(root_module, root_module['ns3::DefaultDeleter< ns3::EventImpl >'])
-    register_Ns3DefaultDeleter__Ns3FlowClassifier_methods(root_module, root_module['ns3::DefaultDeleter< ns3::FlowClassifier >'])
-    register_Ns3DefaultDeleter__Ns3HashImplementation_methods(root_module, root_module['ns3::DefaultDeleter< ns3::Hash::Implementation >'])
-    register_Ns3DefaultDeleter__Ns3NixVector_methods(root_module, root_module['ns3::DefaultDeleter< ns3::NixVector >'])
-    register_Ns3DefaultDeleter__Ns3Packet_methods(root_module, root_module['ns3::DefaultDeleter< ns3::Packet >'])
-    register_Ns3DefaultDeleter__Ns3TraceSourceAccessor_methods(root_module, root_module['ns3::DefaultDeleter< ns3::TraceSourceAccessor >'])
     register_Ns3EventId_methods(root_module, root_module['ns3::EventId'])
     register_Ns3FlowMonitorHelper_methods(root_module, root_module['ns3::FlowMonitorHelper'])
     register_Ns3Hasher_methods(root_module, root_module['ns3::Hasher'])
@@ -499,6 +438,7 @@ def register_methods(root_module):
     register_Ns3Ipv6InterfaceAddress_methods(root_module, root_module['ns3::Ipv6InterfaceAddress'])
     register_Ns3Ipv6Prefix_methods(root_module, root_module['ns3::Ipv6Prefix'])
     register_Ns3Mac48Address_methods(root_module, root_module['ns3::Mac48Address'])
+    register_Ns3Mac8Address_methods(root_module, root_module['ns3::Mac8Address'])
     register_Ns3NodeContainer_methods(root_module, root_module['ns3::NodeContainer'])
     register_Ns3ObjectBase_methods(root_module, root_module['ns3::ObjectBase'])
     register_Ns3ObjectDeleter_methods(root_module, root_module['ns3::ObjectDeleter'])
@@ -553,9 +493,6 @@ def register_methods(root_module):
     register_Ns3AttributeAccessor_methods(root_module, root_module['ns3::AttributeAccessor'])
     register_Ns3AttributeChecker_methods(root_module, root_module['ns3::AttributeChecker'])
     register_Ns3AttributeValue_methods(root_module, root_module['ns3::AttributeValue'])
-    register_Ns3CallbackChecker_methods(root_module, root_module['ns3::CallbackChecker'])
-    register_Ns3CallbackImplBase_methods(root_module, root_module['ns3::CallbackImplBase'])
-    register_Ns3CallbackValue_methods(root_module, root_module['ns3::CallbackValue'])
     register_Ns3EmptyAttributeAccessor_methods(root_module, root_module['ns3::EmptyAttributeAccessor'])
     register_Ns3EmptyAttributeChecker_methods(root_module, root_module['ns3::EmptyAttributeChecker'])
     register_Ns3EmptyAttributeValue_methods(root_module, root_module['ns3::EmptyAttributeValue'])
@@ -604,19 +541,6 @@ def register_methods(root_module):
     register_Ns3TypeIdValue_methods(root_module, root_module['ns3::TypeIdValue'])
     register_Ns3AddressChecker_methods(root_module, root_module['ns3::AddressChecker'])
     register_Ns3AddressValue_methods(root_module, root_module['ns3::AddressValue'])
-    register_Ns3CallbackImpl__Bool_Ns3Ptr__lt__ns3Socket__gt___Const_ns3Address___amp___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Ns3ObjectBase___star___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Const_ns3Ipv4Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ipv4L3ProtocolDropReason_Ns3Ptr__lt__ns3Ipv4__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Const_ns3Ipv4Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Const_ns3Ipv6Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ipv6L3ProtocolDropReason_Ns3Ptr__lt__ns3Ipv6__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Const_ns3Ipv6Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ptr__lt__ns3Ipv4__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ptr__lt__ns3Ipv6__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3NetDevice__gt___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_short_Const_ns3Address___amp___Const_ns3Address___amp___Ns3NetDevicePacketType_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3NetDevice__gt___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Const_ns3Address___amp___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
-    register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, root_module['ns3::CallbackImpl< void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >'])
     register_Ns3QueueDiscItem_methods(root_module, root_module['ns3::QueueDiscItem'])
     register_Ns3HashImplementation_methods(root_module, root_module['ns3::Hash::Implementation'])
     register_Ns3HashFunctionFnv1a_methods(root_module, root_module['ns3::Hash::Function::Fnv1a'])
@@ -1083,141 +1007,6 @@ def register_Ns3ByteTagListIteratorItem_methods(root_module, cls):
     cls.add_instance_attribute('start', 'int32_t', is_const=False)
     ## byte-tag-list.h (module 'network'): ns3::ByteTagList::Iterator::Item::tid [variable]
     cls.add_instance_attribute('tid', 'ns3::TypeId', is_const=False)
-    return
-
-def register_Ns3CallbackBase_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackBase::CallbackBase(ns3::CallbackBase const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackBase const &', 'arg0')])
-    ## callback.h (module 'core'): ns3::CallbackBase::CallbackBase() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::Ptr<ns3::CallbackImplBase> ns3::CallbackBase::GetImpl() const [member function]
-    cls.add_method('GetImpl', 
-                   'ns3::Ptr< ns3::CallbackImplBase >', 
-                   [], 
-                   is_const=True)
-    ## callback.h (module 'core'): ns3::CallbackBase::CallbackBase(ns3::Ptr<ns3::CallbackImplBase> impl) [constructor]
-    cls.add_constructor([param('ns3::Ptr< ns3::CallbackImplBase >', 'impl')], 
-                        visibility='protected')
-    return
-
-def register_Ns3DefaultDeleter__Ns3AttributeAccessor_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeAccessor>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeAccessor>::DefaultDeleter(ns3::DefaultDeleter<ns3::AttributeAccessor> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::AttributeAccessor > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::AttributeAccessor>::Delete(ns3::AttributeAccessor * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::AttributeAccessor *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3AttributeChecker_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeChecker>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeChecker>::DefaultDeleter(ns3::DefaultDeleter<ns3::AttributeChecker> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::AttributeChecker > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::AttributeChecker>::Delete(ns3::AttributeChecker * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::AttributeChecker *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3AttributeValue_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeValue>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::AttributeValue>::DefaultDeleter(ns3::DefaultDeleter<ns3::AttributeValue> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::AttributeValue > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::AttributeValue>::Delete(ns3::AttributeValue * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::AttributeValue *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3CallbackImplBase_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::CallbackImplBase>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::CallbackImplBase>::DefaultDeleter(ns3::DefaultDeleter<ns3::CallbackImplBase> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::CallbackImplBase > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::CallbackImplBase>::Delete(ns3::CallbackImplBase * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::CallbackImplBase *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3EventImpl_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::EventImpl>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::EventImpl>::DefaultDeleter(ns3::DefaultDeleter<ns3::EventImpl> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::EventImpl > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::EventImpl>::Delete(ns3::EventImpl * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::EventImpl *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3FlowClassifier_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::FlowClassifier>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::FlowClassifier>::DefaultDeleter(ns3::DefaultDeleter<ns3::FlowClassifier> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::FlowClassifier > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::FlowClassifier>::Delete(ns3::FlowClassifier * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::FlowClassifier *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3HashImplementation_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Hash::Implementation>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Hash::Implementation>::DefaultDeleter(ns3::DefaultDeleter<ns3::Hash::Implementation> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::Hash::Implementation > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::Hash::Implementation>::Delete(ns3::Hash::Implementation * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::Hash::Implementation *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3NixVector_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::NixVector>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::NixVector>::DefaultDeleter(ns3::DefaultDeleter<ns3::NixVector> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::NixVector > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::NixVector>::Delete(ns3::NixVector * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::NixVector *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3Packet_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Packet>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::Packet>::DefaultDeleter(ns3::DefaultDeleter<ns3::Packet> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::Packet > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::Packet>::Delete(ns3::Packet * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::Packet *', 'object')], 
-                   is_static=True)
-    return
-
-def register_Ns3DefaultDeleter__Ns3TraceSourceAccessor_methods(root_module, cls):
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::TraceSourceAccessor>::DefaultDeleter() [constructor]
-    cls.add_constructor([])
-    ## default-deleter.h (module 'core'): ns3::DefaultDeleter<ns3::TraceSourceAccessor>::DefaultDeleter(ns3::DefaultDeleter<ns3::TraceSourceAccessor> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::DefaultDeleter< ns3::TraceSourceAccessor > const &', 'arg0')])
-    ## default-deleter.h (module 'core'): static void ns3::DefaultDeleter<ns3::TraceSourceAccessor>::Delete(ns3::TraceSourceAccessor * object) [member function]
-    cls.add_method('Delete', 
-                   'void', 
-                   [param('ns3::TraceSourceAccessor *', 'object')], 
-                   is_static=True)
     return
 
 def register_Ns3EventId_methods(root_module, cls):
@@ -1875,6 +1664,11 @@ def register_Ns3Ipv6Address_methods(root_module, cls):
                    'ns3::Ipv6Address', 
                    [param('ns3::Mac64Address', 'addr'), param('ns3::Ipv6Address', 'prefix')], 
                    is_static=True)
+    ## ipv6-address.h (module 'network'): static ns3::Ipv6Address ns3::Ipv6Address::MakeAutoconfiguredAddress(ns3::Mac8Address addr, ns3::Ipv6Address prefix) [member function]
+    cls.add_method('MakeAutoconfiguredAddress', 
+                   'ns3::Ipv6Address', 
+                   [param('ns3::Mac8Address', 'addr'), param('ns3::Ipv6Address', 'prefix')], 
+                   is_static=True)
     ## ipv6-address.h (module 'network'): static ns3::Ipv6Address ns3::Ipv6Address::MakeAutoconfiguredLinkLocalAddress(ns3::Mac16Address mac) [member function]
     cls.add_method('MakeAutoconfiguredLinkLocalAddress', 
                    'ns3::Ipv6Address', 
@@ -1889,6 +1683,11 @@ def register_Ns3Ipv6Address_methods(root_module, cls):
     cls.add_method('MakeAutoconfiguredLinkLocalAddress', 
                    'ns3::Ipv6Address', 
                    [param('ns3::Mac64Address', 'mac')], 
+                   is_static=True)
+    ## ipv6-address.h (module 'network'): static ns3::Ipv6Address ns3::Ipv6Address::MakeAutoconfiguredLinkLocalAddress(ns3::Mac8Address mac) [member function]
+    cls.add_method('MakeAutoconfiguredLinkLocalAddress', 
+                   'ns3::Ipv6Address', 
+                   [param('ns3::Mac8Address', 'mac')], 
                    is_static=True)
     ## ipv6-address.h (module 'network'): static ns3::Ipv6Address ns3::Ipv6Address::MakeIpv4MappedAddress(ns3::Ipv4Address addr) [member function]
     cls.add_method('MakeIpv4MappedAddress', 
@@ -2104,6 +1903,48 @@ def register_Ns3Mac48Address_methods(root_module, cls):
                    [], 
                    is_const=True)
     ## mac48-address.h (module 'network'): static bool ns3::Mac48Address::IsMatchingType(ns3::Address const & address) [member function]
+    cls.add_method('IsMatchingType', 
+                   'bool', 
+                   [param('ns3::Address const &', 'address')], 
+                   is_static=True)
+    return
+
+def register_Ns3Mac8Address_methods(root_module, cls):
+    cls.add_binary_comparison_operator('<')
+    cls.add_binary_comparison_operator('==')
+    cls.add_binary_comparison_operator('!=')
+    cls.add_output_stream_operator()
+    ## mac8-address.h (module 'network'): ns3::Mac8Address::Mac8Address(ns3::Mac8Address const & arg0) [constructor]
+    cls.add_constructor([param('ns3::Mac8Address const &', 'arg0')])
+    ## mac8-address.h (module 'network'): ns3::Mac8Address::Mac8Address() [constructor]
+    cls.add_constructor([])
+    ## mac8-address.h (module 'network'): ns3::Mac8Address::Mac8Address(uint8_t addr) [constructor]
+    cls.add_constructor([param('uint8_t', 'addr')])
+    ## mac8-address.h (module 'network'): static ns3::Mac8Address ns3::Mac8Address::Allocate() [member function]
+    cls.add_method('Allocate', 
+                   'ns3::Mac8Address', 
+                   [], 
+                   is_static=True)
+    ## mac8-address.h (module 'network'): static ns3::Mac8Address ns3::Mac8Address::ConvertFrom(ns3::Address const & address) [member function]
+    cls.add_method('ConvertFrom', 
+                   'ns3::Mac8Address', 
+                   [param('ns3::Address const &', 'address')], 
+                   is_static=True)
+    ## mac8-address.h (module 'network'): void ns3::Mac8Address::CopyFrom(uint8_t const * pBuffer) [member function]
+    cls.add_method('CopyFrom', 
+                   'void', 
+                   [param('uint8_t const *', 'pBuffer')])
+    ## mac8-address.h (module 'network'): void ns3::Mac8Address::CopyTo(uint8_t * pBuffer) const [member function]
+    cls.add_method('CopyTo', 
+                   'void', 
+                   [param('uint8_t *', 'pBuffer')], 
+                   is_const=True)
+    ## mac8-address.h (module 'network'): static ns3::Mac8Address ns3::Mac8Address::GetBroadcast() [member function]
+    cls.add_method('GetBroadcast', 
+                   'ns3::Mac8Address', 
+                   [], 
+                   is_static=True)
+    ## mac8-address.h (module 'network'): static bool ns3::Mac8Address::IsMatchingType(ns3::Address const & address) [member function]
     cls.add_method('IsMatchingType', 
                    'bool', 
                    [param('ns3::Address const &', 'address')], 
@@ -2916,16 +2757,16 @@ def register_Ns3Int64x64_t_methods(root_module, cls):
     cls.add_constructor([param('long double const', 'value')])
     ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(int const v) [constructor]
     cls.add_constructor([param('int const', 'v')])
-    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(long int const v) [constructor]
-    cls.add_constructor([param('long int const', 'v')])
-    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(long long int const v) [constructor]
-    cls.add_constructor([param('long long int const', 'v')])
-    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(unsigned int const v) [constructor]
-    cls.add_constructor([param('unsigned int const', 'v')])
-    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(long unsigned int const v) [constructor]
-    cls.add_constructor([param('long unsigned int const', 'v')])
-    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(long long unsigned int const v) [constructor]
-    cls.add_constructor([param('long long unsigned int const', 'v')])
+    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(int64_t const v) [constructor]
+    cls.add_constructor([param('int64_t const', 'v')])
+    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(int64_t const v) [constructor]
+    cls.add_constructor([param('int64_t const', 'v')])
+    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(uint32_t const v) [constructor]
+    cls.add_constructor([param('uint32_t const', 'v')])
+    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(uint64_t const v) [constructor]
+    cls.add_constructor([param('uint64_t const', 'v')])
+    ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(long uint64_t const v) [constructor]
+    cls.add_constructor([param('long uint64_t const', 'v')])
     ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(int64_t const hi, uint64_t const lo) [constructor]
     cls.add_constructor([param('int64_t const', 'hi'), param('uint64_t const', 'lo')])
     ## int64x64-128.h (module 'core'): ns3::int64x64_t::int64x64_t(ns3::int64x64_t const & o) [constructor]
@@ -2968,6 +2809,11 @@ def register_Ns3Chunk_methods(root_module, cls):
                    'uint32_t', 
                    [param('ns3::Buffer::Iterator', 'start')], 
                    is_pure_virtual=True, is_virtual=True)
+    ## chunk.h (module 'network'): uint32_t ns3::Chunk::Deserialize(ns3::Buffer::Iterator start, ns3::Buffer::Iterator end) [member function]
+    cls.add_method('Deserialize', 
+                   'uint32_t', 
+                   [param('ns3::Buffer::Iterator', 'start'), param('ns3::Buffer::Iterator', 'end')], 
+                   is_virtual=True)
     ## chunk.h (module 'network'): static ns3::TypeId ns3::Chunk::GetTypeId() [member function]
     cls.add_method('GetTypeId', 
                    'ns3::TypeId', 
@@ -3489,17 +3335,17 @@ def register_Ns3Socket_methods(root_module, cls):
     cls.add_constructor([])
     ## socket.h (module 'network'): int ns3::Socket::Bind(ns3::Address const & address) [member function]
     cls.add_method('Bind', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Address const &', 'address')], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::Bind() [member function]
     cls.add_method('Bind', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::Bind6() [member function]
     cls.add_method('Bind6', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): void ns3::Socket::BindToNetDevice(ns3::Ptr<ns3::NetDevice> netdevice) [member function]
@@ -3509,12 +3355,12 @@ def register_Ns3Socket_methods(root_module, cls):
                    is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::Close() [member function]
     cls.add_method('Close', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::Connect(ns3::Address const & address) [member function]
     cls.add_method('Connect', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Address const &', 'address')], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): static ns3::Ptr<ns3::Socket> ns3::Socket::CreateSocket(ns3::Ptr<ns3::Node> node, ns3::TypeId tid) [member function]
@@ -3563,7 +3409,7 @@ def register_Ns3Socket_methods(root_module, cls):
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::GetPeerName(ns3::Address & address) const [member function]
     cls.add_method('GetPeerName', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Address &', 'address')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## socket.h (module 'network'): uint8_t ns3::Socket::GetPriority() const [member function]
@@ -3578,7 +3424,7 @@ def register_Ns3Socket_methods(root_module, cls):
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::GetSockName(ns3::Address & address) const [member function]
     cls.add_method('GetSockName', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Address &', 'address')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## socket.h (module 'network'): ns3::Socket::SocketType ns3::Socket::GetSocketType() const [member function]
@@ -3643,7 +3489,7 @@ def register_Ns3Socket_methods(root_module, cls):
                    is_const=True)
     ## socket.h (module 'network'): int ns3::Socket::Listen() [member function]
     cls.add_method('Listen', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): ns3::Ptr<ns3::Packet> ns3::Socket::Recv(uint32_t maxSize, uint32_t flags) [member function]
@@ -3657,7 +3503,7 @@ def register_Ns3Socket_methods(root_module, cls):
                    [])
     ## socket.h (module 'network'): int ns3::Socket::Recv(uint8_t * buf, uint32_t size, uint32_t flags) [member function]
     cls.add_method('Recv', 
-                   'int', 
+                   'int32_t', 
                    [param('uint8_t *', 'buf'), param('uint32_t', 'size'), param('uint32_t', 'flags')])
     ## socket.h (module 'network'): ns3::Ptr<ns3::Packet> ns3::Socket::RecvFrom(uint32_t maxSize, uint32_t flags, ns3::Address & fromAddress) [member function]
     cls.add_method('RecvFrom', 
@@ -3670,29 +3516,29 @@ def register_Ns3Socket_methods(root_module, cls):
                    [param('ns3::Address &', 'fromAddress')])
     ## socket.h (module 'network'): int ns3::Socket::RecvFrom(uint8_t * buf, uint32_t size, uint32_t flags, ns3::Address & fromAddress) [member function]
     cls.add_method('RecvFrom', 
-                   'int', 
+                   'int32_t', 
                    [param('uint8_t *', 'buf'), param('uint32_t', 'size'), param('uint32_t', 'flags'), param('ns3::Address &', 'fromAddress')])
     ## socket.h (module 'network'): int ns3::Socket::Send(ns3::Ptr<ns3::Packet> p, uint32_t flags) [member function]
     cls.add_method('Send', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Ptr< ns3::Packet >', 'p'), param('uint32_t', 'flags')], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::Send(ns3::Ptr<ns3::Packet> p) [member function]
     cls.add_method('Send', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Ptr< ns3::Packet >', 'p')])
     ## socket.h (module 'network'): int ns3::Socket::Send(uint8_t const * buf, uint32_t size, uint32_t flags) [member function]
     cls.add_method('Send', 
-                   'int', 
+                   'int32_t', 
                    [param('uint8_t const *', 'buf'), param('uint32_t', 'size'), param('uint32_t', 'flags')])
     ## socket.h (module 'network'): int ns3::Socket::SendTo(ns3::Ptr<ns3::Packet> p, uint32_t flags, ns3::Address const & toAddress) [member function]
     cls.add_method('SendTo', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Ptr< ns3::Packet >', 'p'), param('uint32_t', 'flags'), param('ns3::Address const &', 'toAddress')], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::SendTo(uint8_t const * buf, uint32_t size, uint32_t flags, ns3::Address const & address) [member function]
     cls.add_method('SendTo', 
-                   'int', 
+                   'int32_t', 
                    [param('uint8_t const *', 'buf'), param('uint32_t', 'size'), param('uint32_t', 'flags'), param('ns3::Address const &', 'address')])
     ## socket.h (module 'network'): void ns3::Socket::SetAcceptCallback(ns3::Callback<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> connectionRequest, ns3::Callback<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> newConnectionCreated) [member function]
     cls.add_method('SetAcceptCallback', 
@@ -3711,10 +3557,10 @@ def register_Ns3Socket_methods(root_module, cls):
     cls.add_method('SetConnectCallback', 
                    'void', 
                    [param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'connectionSucceeded'), param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'connectionFailed')])
-    ## socket.h (module 'network'): void ns3::Socket::SetDataSentCallback(ns3::Callback<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> dataSent) [member function]
+    ## socket.h (module 'network'): void ns3::Socket::SetDataSentCallback(ns3::Callback<void, ns3::Ptr<ns3::Socket>, uint32_t, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> dataSent) [member function]
     cls.add_method('SetDataSentCallback', 
                    'void', 
-                   [param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'dataSent')])
+                   [param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, uint32_t, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'dataSent')])
     ## socket.h (module 'network'): void ns3::Socket::SetIpRecvTos(bool ipv4RecvTos) [member function]
     cls.add_method('SetIpRecvTos', 
                    'void', 
@@ -3748,7 +3594,7 @@ def register_Ns3Socket_methods(root_module, cls):
     ## socket.h (module 'network'): void ns3::Socket::SetIpv6Tclass(int ipTclass) [member function]
     cls.add_method('SetIpv6Tclass', 
                    'void', 
-                   [param('int', 'ipTclass')])
+                   [param('int32_t', 'ipTclass')])
     ## socket.h (module 'network'): void ns3::Socket::SetPriority(uint8_t priority) [member function]
     cls.add_method('SetPriority', 
                    'void', 
@@ -3761,18 +3607,18 @@ def register_Ns3Socket_methods(root_module, cls):
     cls.add_method('SetRecvPktInfo', 
                    'void', 
                    [param('bool', 'flag')])
-    ## socket.h (module 'network'): void ns3::Socket::SetSendCallback(ns3::Callback<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> sendCb) [member function]
+    ## socket.h (module 'network'): void ns3::Socket::SetSendCallback(ns3::Callback<void, ns3::Ptr<ns3::Socket>, uint32_t, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> sendCb) [member function]
     cls.add_method('SetSendCallback', 
                    'void', 
-                   [param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'sendCb')])
+                   [param('ns3::Callback< void, ns3::Ptr< ns3::Socket >, uint32_t, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'sendCb')])
     ## socket.h (module 'network'): int ns3::Socket::ShutdownRecv() [member function]
     cls.add_method('ShutdownRecv', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): int ns3::Socket::ShutdownSend() [member function]
     cls.add_method('ShutdownSend', 
-                   'int', 
+                   'int32_t', 
                    [], 
                    is_pure_virtual=True, is_virtual=True)
     ## socket.h (module 'network'): void ns3::Socket::DoDispose() [member function]
@@ -4143,17 +3989,17 @@ def register_Ns3Time_methods(root_module, cls):
     ## nstime.h (module 'core'): ns3::Time::Time(double v) [constructor]
     cls.add_constructor([param('double', 'v')])
     ## nstime.h (module 'core'): ns3::Time::Time(int v) [constructor]
-    cls.add_constructor([param('int', 'v')])
-    ## nstime.h (module 'core'): ns3::Time::Time(long int v) [constructor]
-    cls.add_constructor([param('long int', 'v')])
-    ## nstime.h (module 'core'): ns3::Time::Time(long long int v) [constructor]
-    cls.add_constructor([param('long long int', 'v')])
-    ## nstime.h (module 'core'): ns3::Time::Time(unsigned int v) [constructor]
-    cls.add_constructor([param('unsigned int', 'v')])
-    ## nstime.h (module 'core'): ns3::Time::Time(long unsigned int v) [constructor]
-    cls.add_constructor([param('long unsigned int', 'v')])
-    ## nstime.h (module 'core'): ns3::Time::Time(long long unsigned int v) [constructor]
-    cls.add_constructor([param('long long unsigned int', 'v')])
+    cls.add_constructor([param('int32_t', 'v')])
+    ## nstime.h (module 'core'): ns3::Time::Time(int64_t v) [constructor]
+    cls.add_constructor([param('int64_t', 'v')])
+    ## nstime.h (module 'core'): ns3::Time::Time(int64_t v) [constructor]
+    cls.add_constructor([param('int64_t', 'v')])
+    ## nstime.h (module 'core'): ns3::Time::Time(uint32_t v) [constructor]
+    cls.add_constructor([param('uint32_t', 'v')])
+    ## nstime.h (module 'core'): ns3::Time::Time(uint64_t v) [constructor]
+    cls.add_constructor([param('uint64_t', 'v')])
+    ## nstime.h (module 'core'): ns3::Time::Time(long uint64_t v) [constructor]
+    cls.add_constructor([param('long uint64_t', 'v')])
     ## nstime.h (module 'core'): ns3::Time::Time(ns3::int64x64_t const & v) [constructor]
     cls.add_constructor([param('ns3::int64x64_t const &', 'v')])
     ## nstime.h (module 'core'): ns3::Time::Time(std::string const & s) [constructor]
@@ -4165,7 +4011,7 @@ def register_Ns3Time_methods(root_module, cls):
                    is_const=True)
     ## nstime.h (module 'core'): int ns3::Time::Compare(ns3::Time const & o) const [member function]
     cls.add_method('Compare', 
-                   'int', 
+                   'int32_t', 
                    [param('ns3::Time const &', 'o')], 
                    is_const=True)
     ## nstime.h (module 'core'): static ns3::Time ns3::Time::From(ns3::int64x64_t const & value) [member function]
@@ -4358,6 +4204,11 @@ def register_Ns3Trailer_methods(root_module, cls):
                    'uint32_t', 
                    [param('ns3::Buffer::Iterator', 'end')], 
                    is_pure_virtual=True, is_virtual=True)
+    ## trailer.h (module 'network'): uint32_t ns3::Trailer::Deserialize(ns3::Buffer::Iterator start, ns3::Buffer::Iterator end) [member function]
+    cls.add_method('Deserialize', 
+                   'uint32_t', 
+                   [param('ns3::Buffer::Iterator', 'start'), param('ns3::Buffer::Iterator', 'end')], 
+                   is_virtual=True)
     ## trailer.h (module 'network'): uint32_t ns3::Trailer::GetSerializedSize() const [member function]
     cls.add_method('GetSerializedSize', 
                    'uint32_t', 
@@ -4469,143 +4320,6 @@ def register_Ns3AttributeValue_methods(root_module, cls):
                    'std::string', 
                    [param('ns3::Ptr< ns3::AttributeChecker const >', 'checker')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
-    return
-
-def register_Ns3CallbackChecker_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackChecker::CallbackChecker() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackChecker::CallbackChecker(ns3::CallbackChecker const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackChecker const &', 'arg0')])
-    return
-
-def register_Ns3CallbackImplBase_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImplBase::CallbackImplBase() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImplBase::CallbackImplBase(ns3::CallbackImplBase const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImplBase const &', 'arg0')])
-    ## callback.h (module 'core'): std::string ns3::CallbackImplBase::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_pure_virtual=True, is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): bool ns3::CallbackImplBase::IsEqual(ns3::Ptr<const ns3::CallbackImplBase> other) const [member function]
-    cls.add_method('IsEqual', 
-                   'bool', 
-                   [param('ns3::Ptr< ns3::CallbackImplBase const >', 'other')], 
-                   is_pure_virtual=True, is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::Demangle(std::string const & mangled) [member function]
-    cls.add_method('Demangle', 
-                   'std::string', 
-                   [param('std::string const &', 'mangled')], 
-                   is_static=True, visibility='protected')
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::ObjectBase*'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'void'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ptr<ns3::NetDevice> '])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ptr<ns3::Packet const> '])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'unsigned short'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Address const&'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::NetDevice::PacketType'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ptr<ns3::Socket> '])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'bool'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'unsigned int'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ipv4Header const&'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ptr<ns3::Ipv4> '])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ipv4L3Protocol::DropReason'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ptr<ns3::Ipv6> '])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ipv6Header const&'])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImplBase::GetCppTypeid() [member function]
-    cls.add_method('GetCppTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True, visibility='protected', template_parameters=[u'ns3::Ipv6L3Protocol::DropReason'])
-    return
-
-def register_Ns3CallbackValue_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackValue::CallbackValue(ns3::CallbackValue const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackValue const &', 'arg0')])
-    ## callback.h (module 'core'): ns3::CallbackValue::CallbackValue() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackValue::CallbackValue(ns3::CallbackBase const & base) [constructor]
-    cls.add_constructor([param('ns3::CallbackBase const &', 'base')])
-    ## callback.h (module 'core'): ns3::Ptr<ns3::AttributeValue> ns3::CallbackValue::Copy() const [member function]
-    cls.add_method('Copy', 
-                   'ns3::Ptr< ns3::AttributeValue >', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): bool ns3::CallbackValue::DeserializeFromString(std::string value, ns3::Ptr<const ns3::AttributeChecker> checker) [member function]
-    cls.add_method('DeserializeFromString', 
-                   'bool', 
-                   [param('std::string', 'value'), param('ns3::Ptr< ns3::AttributeChecker const >', 'checker')], 
-                   is_virtual=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackValue::SerializeToString(ns3::Ptr<const ns3::AttributeChecker> checker) const [member function]
-    cls.add_method('SerializeToString', 
-                   'std::string', 
-                   [param('ns3::Ptr< ns3::AttributeChecker const >', 'checker')], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackValue::Set(ns3::CallbackBase base) [member function]
-    cls.add_method('Set', 
-                   'void', 
-                   [param('ns3::CallbackBase', 'base')])
     return
 
 def register_Ns3EmptyAttributeAccessor_methods(root_module, cls):
@@ -4759,14 +4473,14 @@ def register_Ns3FlowMonitor_methods(root_module, cls):
     cls.add_method('CheckForLostPackets', 
                    'void', 
                    [param('ns3::Time', 'maxDelay')])
-    ## flow-monitor.h (module 'flow-monitor'): std::vector<ns3::Ptr<ns3::FlowProbe>, std::allocator<ns3::Ptr<ns3::FlowProbe> > > const & ns3::FlowMonitor::GetAllProbes() const [member function]
+    ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowProbeContainer const & ns3::FlowMonitor::GetAllProbes() const [member function]
     cls.add_method('GetAllProbes', 
-                   'std::vector< ns3::Ptr< ns3::FlowProbe > > const &', 
+                   'ns3::FlowMonitor::FlowProbeContainer const &', 
                    [], 
                    is_const=True)
-    ## flow-monitor.h (module 'flow-monitor'): std::map<unsigned int, ns3::Flow Monitor::FlowStats, std::less<unsigned int>, std::allocator<std::pair<unsigned int const, ns3::FlowMonitor::FlowStats> > > const & ns3::FlowMonitor::GetFlowStats() const [member function]
+    ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStatsContainer const & ns3::FlowMonitor::GetFlowStats() const [member function]
     cls.add_method('GetFlowStats', 
-                   'std::map< unsigned int, ns3::FlowMonitor::FlowStats > const &', 
+                   'ns3::FlowMonitor::FlowStatsContainer const &', 
                    [], 
                    is_const=True)
     ## flow-monitor.h (module 'flow-monitor'): ns3::TypeId ns3::FlowMonitor::GetInstanceTypeId() const [member function]
@@ -4841,7 +4555,7 @@ def register_Ns3FlowMonitorFlowStats_methods(root_module, cls):
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::FlowStats(ns3::FlowMonitor::FlowStats const & arg0) [constructor]
     cls.add_constructor([param('ns3::FlowMonitor::FlowStats const &', 'arg0')])
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::bytesDropped [variable]
-    cls.add_instance_attribute('bytesDropped', 'std::vector< unsigned long >', is_const=False)
+    cls.add_instance_attribute('bytesDropped', 'std::vector< uint64_t >', is_const=False)
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::delayHistogram [variable]
     cls.add_instance_attribute('delayHistogram', 'ns3::Histogram', is_const=False)
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::delaySum [variable]
@@ -4859,7 +4573,7 @@ def register_Ns3FlowMonitorFlowStats_methods(root_module, cls):
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::packetSizeHistogram [variable]
     cls.add_instance_attribute('packetSizeHistogram', 'ns3::Histogram', is_const=False)
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::packetsDropped [variable]
-    cls.add_instance_attribute('packetsDropped', 'std::vector< unsigned int >', is_const=False)
+    cls.add_instance_attribute('packetsDropped', 'std::vector< uint32_t >', is_const=False)
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::rxBytes [variable]
     cls.add_instance_attribute('rxBytes', 'uint64_t', is_const=False)
     ## flow-monitor.h (module 'flow-monitor'): ns3::FlowMonitor::FlowStats::rxPackets [variable]
@@ -4922,13 +4636,13 @@ def register_Ns3FlowProbeFlowStats_methods(root_module, cls):
     ## flow-probe.h (module 'flow-monitor'): ns3::FlowProbe::FlowStats::bytes [variable]
     cls.add_instance_attribute('bytes', 'uint64_t', is_const=False)
     ## flow-probe.h (module 'flow-monitor'): ns3::FlowProbe::FlowStats::bytesDropped [variable]
-    cls.add_instance_attribute('bytesDropped', 'std::vector< unsigned long >', is_const=False)
+    cls.add_instance_attribute('bytesDropped', 'std::vector< uint64_t >', is_const=False)
     ## flow-probe.h (module 'flow-monitor'): ns3::FlowProbe::FlowStats::delayFromFirstProbeSum [variable]
     cls.add_instance_attribute('delayFromFirstProbeSum', 'ns3::Time', is_const=False)
     ## flow-probe.h (module 'flow-monitor'): ns3::FlowProbe::FlowStats::packets [variable]
     cls.add_instance_attribute('packets', 'uint32_t', is_const=False)
     ## flow-probe.h (module 'flow-monitor'): ns3::FlowProbe::FlowStats::packetsDropped [variable]
-    cls.add_instance_attribute('packetsDropped', 'std::vector< unsigned int >', is_const=False)
+    cls.add_instance_attribute('packetsDropped', 'std::vector< uint32_t >', is_const=False)
     return
 
 def register_Ns3Ipv4_methods(root_module, cls):
@@ -5004,12 +4718,12 @@ def register_Ns3Ipv4_methods(root_module, cls):
     ## ipv4.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv4::GetProtocol(int protocolNumber) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber')], 
+                   [param('int32_t', 'protocolNumber')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## ipv4.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv4::GetProtocol(int protocolNumber, int32_t interfaceIndex) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
+                   [param('int32_t', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## ipv4.h (module 'internet'): ns3::Ptr<ns3::Ipv4RoutingProtocol> ns3::Ipv4::GetRoutingProtocol() const [member function]
     cls.add_method('GetRoutingProtocol', 
@@ -5187,9 +4901,9 @@ def register_Ns3Ipv4FlowClassifier_methods(root_module, cls):
                    'ns3::Ipv4FlowClassifier::FiveTuple', 
                    [param('uint32_t', 'flowId')], 
                    is_const=True)
-    ## ipv4-flow-classifier.h (module 'flow-monitor'): std::vector<std::pair<ns3::Ipv4Header::DscpType, unsigned int>, std::allocator<std::pair<ns3::Ipv4Header::DscpType, unsigned int> > > ns3::Ipv4FlowClassifier::GetDscpCounts(ns3::FlowId flowId) const [member function]
+    ## ipv4-flow-classifier.h (module 'flow-monitor'): std::vector<std::pair<ns3::Ipv4Header::DscpType, uint32_t>, std::allocator<std::pair<ns3::Ipv4Header::DscpType, uint32_t> > > ns3::Ipv4FlowClassifier::GetDscpCounts(ns3::FlowId flowId) const [member function]
     cls.add_method('GetDscpCounts', 
-                   'std::vector< std::pair< ns3::Ipv4Header::DscpType, unsigned int > >', 
+                   'std::vector< std::pair< ns3::Ipv4Header::DscpType, uint32_t > >', 
                    [param('uint32_t', 'flowId')], 
                    is_const=True)
     ## ipv4-flow-classifier.h (module 'flow-monitor'): void ns3::Ipv4FlowClassifier::SerializeToXmlStream(std::ostream & os, uint16_t indent) const [member function]
@@ -5223,10 +4937,10 @@ def register_Ns3Ipv4FlowClassifierSortByCount_methods(root_module, cls):
     cls.add_constructor([])
     ## ipv4-flow-classifier.h (module 'flow-monitor'): ns3::Ipv4FlowClassifier::SortByCount::SortByCount(ns3::Ipv4FlowClassifier::SortByCount const & arg0) [constructor]
     cls.add_constructor([param('ns3::Ipv4FlowClassifier::SortByCount const &', 'arg0')])
-    ## ipv4-flow-classifier.h (module 'flow-monitor'): bool ns3::Ipv4FlowClassifier::SortByCount::operator()(std::pair<ns3::Ipv4Header::DscpType, unsigned int> left, std::pair<ns3::Ipv4Header::DscpType, unsigned int> right) [member operator]
+    ## ipv4-flow-classifier.h (module 'flow-monitor'): bool ns3::Ipv4FlowClassifier::SortByCount::operator()(std::pair<ns3::Ipv4Header::DscpType, uint32_t> left, std::pair<ns3::Ipv4Header::DscpType, uint32_t> right) [member operator]
     cls.add_method('operator()', 
                    'bool', 
-                   [param('std::pair< ns3::Ipv4Header::DscpType, unsigned int >', 'left'), param('std::pair< ns3::Ipv4Header::DscpType, unsigned int >', 'right')], 
+                   [param('std::pair< ns3::Ipv4Header::DscpType, uint32_t >', 'left'), param('std::pair< ns3::Ipv4Header::DscpType, uint32_t >', 'right')], 
                    custom_name=u'__call__')
     return
 
@@ -5321,12 +5035,12 @@ def register_Ns3Ipv4L3Protocol_methods(root_module, cls):
     ## ipv4-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv4L3Protocol::GetProtocol(int protocolNumber) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber')], 
+                   [param('int32_t', 'protocolNumber')], 
                    is_const=True, is_virtual=True)
     ## ipv4-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv4L3Protocol::GetProtocol(int protocolNumber, int32_t interfaceIndex) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
+                   [param('int32_t', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
                    is_const=True, is_virtual=True)
     ## ipv4-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::Ipv4RoutingProtocol> ns3::Ipv4L3Protocol::GetRoutingProtocol() const [member function]
     cls.add_method('GetRoutingProtocol', 
@@ -5534,9 +5248,9 @@ def register_Ns3Ipv4MulticastRoute_methods(root_module, cls):
                    'ns3::Ipv4Address', 
                    [], 
                    is_const=True)
-    ## ipv4-route.h (module 'internet'): std::map<unsigned int, unsigned int, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned int> > > ns3::Ipv4MulticastRoute::GetOutputTtlMap() const [member function]
+    ## ipv4-route.h (module 'internet'): std::map<uint32_t, uint32_t, std::less<uint32_t>, std::allocator<std::pair<const uint32_t, uint32_t> > > ns3::Ipv4MulticastRoute::GetOutputTtlMap() const [member function]
     cls.add_method('GetOutputTtlMap', 
-                   'std::map< unsigned int, unsigned int >', 
+                   'std::map< uint32_t, uint32_t >', 
                    [], 
                    is_const=True)
     ## ipv4-route.h (module 'internet'): uint32_t ns3::Ipv4MulticastRoute::GetParent() const [member function]
@@ -5648,7 +5362,7 @@ def register_Ns3Ipv4RoutingProtocol_methods(root_module, cls):
     ## ipv4-routing-protocol.h (module 'internet'): bool ns3::Ipv4RoutingProtocol::RouteInput(ns3::Ptr<const ns3::Packet> p, ns3::Ipv4Header const & header, ns3::Ptr<const ns3::NetDevice> idev, ns3::Ipv4RoutingProtocol::UnicastForwardCallback ucb, ns3::Ipv4RoutingProtocol::MulticastForwardCallback mcb, ns3::Ipv4RoutingProtocol::LocalDeliverCallback lcb, ns3::Ipv4RoutingProtocol::ErrorCallback ecb) [member function]
     cls.add_method('RouteInput', 
                    'bool', 
-                   [param('ns3::Ptr< ns3::Packet const >', 'p'), param('ns3::Ipv4Header const &', 'header'), param('ns3::Ptr< ns3::NetDevice const >', 'idev'), param('ns3::Callback< void, ns3::Ptr< ns3::Ipv4Route >, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'ucb'), param('ns3::Callback< void, ns3::Ptr< ns3::Ipv4MulticastRoute >, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'mcb'), param('ns3::Callback< void, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'lcb'), param('ns3::Callback< void, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::Socket::SocketErrno, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'ecb')], 
+                   [param('ns3::Ptr< ns3::Packet const >', 'p'), param('ns3::Ipv4Header const &', 'header'), param('ns3::Ptr< ns3::NetDevice const >', 'idev'), param('ns3::Callback< void, ns3::Ptr< ns3::Ipv4Route >, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'ucb'), param('ns3::Callback< void, ns3::Ptr< ns3::Ipv4MulticastRoute >, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'mcb'), param('ns3::Callback< void, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, uint32_t, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'lcb'), param('ns3::Callback< void, ns3::Ptr< ns3::Packet const >, ns3::Ipv4Header const &, ns3::Socket::SocketErrno, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'ecb')], 
                    is_pure_virtual=True, is_virtual=True)
     ## ipv4-routing-protocol.h (module 'internet'): ns3::Ptr<ns3::Ipv4Route> ns3::Ipv4RoutingProtocol::RouteOutput(ns3::Ptr<ns3::Packet> p, ns3::Ipv4Header const & header, ns3::Ptr<ns3::NetDevice> oif, ns3::Socket::SocketErrno & sockerr) [member function]
     cls.add_method('RouteOutput', 
@@ -5725,12 +5439,12 @@ def register_Ns3Ipv6_methods(root_module, cls):
     ## ipv6.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv6::GetProtocol(int protocolNumber) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber')], 
+                   [param('int32_t', 'protocolNumber')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## ipv6.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv6::GetProtocol(int protocolNumber, int32_t interfaceIndex) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
+                   [param('int32_t', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
                    is_pure_virtual=True, is_const=True, is_virtual=True)
     ## ipv6.h (module 'internet'): ns3::Ptr<ns3::Ipv6RoutingProtocol> ns3::Ipv6::GetRoutingProtocol() const [member function]
     cls.add_method('GetRoutingProtocol', 
@@ -5908,9 +5622,9 @@ def register_Ns3Ipv6FlowClassifier_methods(root_module, cls):
                    'ns3::Ipv6FlowClassifier::FiveTuple', 
                    [param('uint32_t', 'flowId')], 
                    is_const=True)
-    ## ipv6-flow-classifier.h (module 'flow-monitor'): std::vector<std::pair<ns3::Ipv6Header::DscpType, unsigned int>, std::allocator<std::pair<ns3::Ipv6Header::DscpType, unsigned int> > > ns3::Ipv6FlowClassifier::GetDscpCounts(ns3::FlowId flowId) const [member function]
+    ## ipv6-flow-classifier.h (module 'flow-monitor'): std::vector<std::pair<ns3::Ipv6Header::DscpType, uint32_t>, std::allocator<std::pair<ns3::Ipv6Header::DscpType, uint32_t> > > ns3::Ipv6FlowClassifier::GetDscpCounts(ns3::FlowId flowId) const [member function]
     cls.add_method('GetDscpCounts', 
-                   'std::vector< std::pair< ns3::Ipv6Header::DscpType, unsigned int > >', 
+                   'std::vector< std::pair< ns3::Ipv6Header::DscpType, uint32_t > >', 
                    [param('uint32_t', 'flowId')], 
                    is_const=True)
     ## ipv6-flow-classifier.h (module 'flow-monitor'): void ns3::Ipv6FlowClassifier::SerializeToXmlStream(std::ostream & os, uint16_t indent) const [member function]
@@ -5944,10 +5658,10 @@ def register_Ns3Ipv6FlowClassifierSortByCount_methods(root_module, cls):
     cls.add_constructor([])
     ## ipv6-flow-classifier.h (module 'flow-monitor'): ns3::Ipv6FlowClassifier::SortByCount::SortByCount(ns3::Ipv6FlowClassifier::SortByCount const & arg0) [constructor]
     cls.add_constructor([param('ns3::Ipv6FlowClassifier::SortByCount const &', 'arg0')])
-    ## ipv6-flow-classifier.h (module 'flow-monitor'): bool ns3::Ipv6FlowClassifier::SortByCount::operator()(std::pair<ns3::Ipv6Header::DscpType, unsigned int> left, std::pair<ns3::Ipv6Header::DscpType, unsigned int> right) [member operator]
+    ## ipv6-flow-classifier.h (module 'flow-monitor'): bool ns3::Ipv6FlowClassifier::SortByCount::operator()(std::pair<ns3::Ipv6Header::DscpType, uint32_t> left, std::pair<ns3::Ipv6Header::DscpType, uint32_t> right) [member operator]
     cls.add_method('operator()', 
                    'bool', 
-                   [param('std::pair< ns3::Ipv6Header::DscpType, unsigned int >', 'left'), param('std::pair< ns3::Ipv6Header::DscpType, unsigned int >', 'right')], 
+                   [param('std::pair< ns3::Ipv6Header::DscpType, uint32_t >', 'left'), param('std::pair< ns3::Ipv6Header::DscpType, uint32_t >', 'right')], 
                    custom_name=u'__call__')
     return
 
@@ -6003,12 +5717,12 @@ def register_Ns3Ipv6L3Protocol_methods(root_module, cls):
     ## ipv6-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv6L3Protocol::GetProtocol(int protocolNumber) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber')], 
+                   [param('int32_t', 'protocolNumber')], 
                    is_const=True, is_virtual=True)
     ## ipv6-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::IpL4Protocol> ns3::Ipv6L3Protocol::GetProtocol(int protocolNumber, int32_t interfaceIndex) const [member function]
     cls.add_method('GetProtocol', 
                    'ns3::Ptr< ns3::IpL4Protocol >', 
-                   [param('int', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
+                   [param('int32_t', 'protocolNumber'), param('int32_t', 'interfaceIndex')], 
                    is_const=True, is_virtual=True)
     ## ipv6-l3-protocol.h (module 'internet'): ns3::Ptr<ns3::Socket> ns3::Ipv6L3Protocol::CreateRawSocket() [member function]
     cls.add_method('CreateRawSocket', 
@@ -6483,12 +6197,12 @@ def register_Ns3NetDevice_methods(root_module, cls):
     ## net-device.h (module 'network'): void ns3::NetDevice::SetPromiscReceiveCallback(ns3::NetDevice::PromiscReceiveCallback cb) [member function]
     cls.add_method('SetPromiscReceiveCallback', 
                    'void', 
-                   [param('ns3::Callback< bool, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, unsigned short, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'cb')], 
+                   [param('ns3::Callback< bool, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, uint16_t, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'cb')], 
                    is_pure_virtual=True, is_virtual=True)
     ## net-device.h (module 'network'): void ns3::NetDevice::SetReceiveCallback(ns3::NetDevice::ReceiveCallback cb) [member function]
     cls.add_method('SetReceiveCallback', 
                    'void', 
-                   [param('ns3::Callback< bool, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, unsigned short, ns3::Address const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'cb')], 
+                   [param('ns3::Callback< bool, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, uint16_t, ns3::Address const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty >', 'cb')], 
                    is_pure_virtual=True, is_virtual=True)
     ## net-device.h (module 'network'): bool ns3::NetDevice::SupportsSendFrom() const [member function]
     cls.add_method('SupportsSendFrom', 
@@ -6608,7 +6322,7 @@ def register_Ns3Node_methods(root_module, cls):
     ## node.h (module 'network'): void ns3::Node::RegisterProtocolHandler(ns3::Node::ProtocolHandler handler, uint16_t protocolType, ns3::Ptr<ns3::NetDevice> device, bool promiscuous=false) [member function]
     cls.add_method('RegisterProtocolHandler', 
                    'void', 
-                   [param('ns3::Callback< void, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, unsigned short, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'handler'), param('uint16_t', 'protocolType'), param('ns3::Ptr< ns3::NetDevice >', 'device'), param('bool', 'promiscuous', default_value='false')])
+                   [param('ns3::Callback< void, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, uint16_t, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'handler'), param('uint16_t', 'protocolType'), param('ns3::Ptr< ns3::NetDevice >', 'device'), param('bool', 'promiscuous', default_value='false')])
     ## node.h (module 'network'): void ns3::Node::UnregisterDeviceAdditionListener(ns3::Node::DeviceAdditionListener listener) [member function]
     cls.add_method('UnregisterDeviceAdditionListener', 
                    'void', 
@@ -6616,7 +6330,7 @@ def register_Ns3Node_methods(root_module, cls):
     ## node.h (module 'network'): void ns3::Node::UnregisterProtocolHandler(ns3::Node::ProtocolHandler handler) [member function]
     cls.add_method('UnregisterProtocolHandler', 
                    'void', 
-                   [param('ns3::Callback< void, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, unsigned short, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'handler')])
+                   [param('ns3::Callback< void, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, uint16_t, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty >', 'handler')])
     ## node.h (module 'network'): void ns3::Node::DoDispose() [member function]
     cls.add_method('DoDispose', 
                    'void', 
@@ -6795,6 +6509,11 @@ def register_Ns3Packet_methods(root_module, cls):
                    'uint32_t', 
                    [param('ns3::Header &', 'header')], 
                    is_const=True)
+    ## packet.h (module 'network'): uint32_t ns3::Packet::PeekHeader(ns3::Header & header, uint32_t size) const [member function]
+    cls.add_method('PeekHeader', 
+                   'uint32_t', 
+                   [param('ns3::Header &', 'header'), param('uint32_t', 'size')], 
+                   is_const=True)
     ## packet.h (module 'network'): bool ns3::Packet::PeekPacketTag(ns3::Tag & tag) const [member function]
     cls.add_method('PeekPacketTag', 
                    'bool', 
@@ -6839,6 +6558,10 @@ def register_Ns3Packet_methods(root_module, cls):
     cls.add_method('RemoveHeader', 
                    'uint32_t', 
                    [param('ns3::Header &', 'header')])
+    ## packet.h (module 'network'): uint32_t ns3::Packet::RemoveHeader(ns3::Header & header, uint32_t size) [member function]
+    cls.add_method('RemoveHeader', 
+                   'uint32_t', 
+                   [param('ns3::Header &', 'header'), param('uint32_t', 'size')])
     ## packet.h (module 'network'): bool ns3::Packet::RemovePacketTag(ns3::Tag & tag) [member function]
     cls.add_method('RemovePacketTag', 
                    'bool', 
@@ -7004,292 +6727,6 @@ def register_Ns3AddressValue_methods(root_module, cls):
     cls.add_method('Set', 
                    'void', 
                    [param('ns3::Address const &', 'value')])
-    return
-
-def register_Ns3CallbackImpl__Bool_Ns3Ptr__lt__ns3Socket__gt___Const_ns3Address___amp___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< bool, ns3::Ptr< ns3::Socket >, ns3::Address const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): bool ns3::CallbackImpl<bool, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::Socket> arg0, ns3::Address const & arg1) [member operator]
-    cls.add_method('operator()', 
-                   'bool', 
-                   [param('ns3::Ptr< ns3::Socket >', 'arg0'), param('ns3::Address const &', 'arg1')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Ns3ObjectBase___star___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): ns3::ObjectBase * ns3::CallbackImpl<ns3::ObjectBase *, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()() [member operator]
-    cls.add_method('operator()', 
-                   'ns3::ObjectBase *', 
-                   [], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Const_ns3Ipv4Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ipv4L3ProtocolDropReason_Ns3Ptr__lt__ns3Ipv4__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ipv4Header const &, ns3::Ptr< ns3::Packet const >, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr< ns3::Ipv4 >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv4L3Protocol::DropReason, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ipv4Header const & arg0, ns3::Ptr<const ns3::Packet> arg1, ns3::Ipv4L3Protocol::DropReason arg2, ns3::Ptr<ns3::Ipv4> arg3, unsigned int arg4) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ipv4Header const &', 'arg0'), param('ns3::Ptr< ns3::Packet const >', 'arg1'), param('ns3::Ipv4L3Protocol::DropReason', 'arg2'), param('ns3::Ptr< ns3::Ipv4 >', 'arg3'), param('unsigned int', 'arg4')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Const_ns3Ipv4Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ipv4Header const &, ns3::Ptr< ns3::Packet const >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, const ns3::Ipv4Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ipv4Header const & arg0, ns3::Ptr<const ns3::Packet> arg1, unsigned int arg2) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ipv4Header const &', 'arg0'), param('ns3::Ptr< ns3::Packet const >', 'arg1'), param('unsigned int', 'arg2')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Const_ns3Ipv6Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ipv6L3ProtocolDropReason_Ns3Ptr__lt__ns3Ipv6__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ipv6Header const &, ns3::Ptr< ns3::Packet const >, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr< ns3::Ipv6 >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, ns3::Ipv6L3Protocol::DropReason, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ipv6Header const & arg0, ns3::Ptr<const ns3::Packet> arg1, ns3::Ipv6L3Protocol::DropReason arg2, ns3::Ptr<ns3::Ipv6> arg3, unsigned int arg4) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ipv6Header const &', 'arg0'), param('ns3::Ptr< ns3::Packet const >', 'arg1'), param('ns3::Ipv6L3Protocol::DropReason', 'arg2'), param('ns3::Ptr< ns3::Ipv6 >', 'arg3'), param('unsigned int', 'arg4')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Const_ns3Ipv6Header___amp___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ipv6Header const &, ns3::Ptr< ns3::Packet const >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, const ns3::Ipv6Header &, ns3::Ptr<const ns3::Packet>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ipv6Header const & arg0, ns3::Ptr<const ns3::Packet> arg1, unsigned int arg2) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ipv6Header const &', 'arg0'), param('ns3::Ptr< ns3::Packet const >', 'arg1'), param('unsigned int', 'arg2')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ptr__lt__ns3Ipv4__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::Packet const >, ns3::Ptr< ns3::Ipv4 >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv4>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<const ns3::Packet> arg0, ns3::Ptr<ns3::Ipv4> arg1, unsigned int arg2) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::Packet const >', 'arg0'), param('ns3::Ptr< ns3::Ipv4 >', 'arg1'), param('unsigned int', 'arg2')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__const_ns3Packet__gt___Ns3Ptr__lt__ns3Ipv6__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::Packet const >, ns3::Ptr< ns3::Ipv6 >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<const ns3::Packet>, ns3::Ptr<ns3::Ipv6>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<const ns3::Packet> arg0, ns3::Ptr<ns3::Ipv6> arg1, unsigned int arg2) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::Packet const >', 'arg0'), param('ns3::Ptr< ns3::Ipv6 >', 'arg1'), param('unsigned int', 'arg2')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3NetDevice__gt___Ns3Ptr__lt__const_ns3Packet__gt___Unsigned_short_Const_ns3Address___amp___Const_ns3Address___amp___Ns3NetDevicePacketType_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::NetDevice >, ns3::Ptr< ns3::Packet const >, unsigned short, ns3::Address const &, ns3::Address const &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::Ptr<const ns3::Packet>, unsigned short, const ns3::Address &, const ns3::Address &, ns3::NetDevice::PacketType, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::NetDevice> arg0, ns3::Ptr<const ns3::Packet> arg1, short unsigned int arg2, ns3::Address const & arg3, ns3::Address const & arg4, ns3::NetDevice::PacketType arg5) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::NetDevice >', 'arg0'), param('ns3::Ptr< ns3::Packet const >', 'arg1'), param('short unsigned int', 'arg2'), param('ns3::Address const &', 'arg3'), param('ns3::Address const &', 'arg4'), param('ns3::NetDevice::PacketType', 'arg5')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3NetDevice__gt___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::NetDevice >, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<ns3::NetDevice>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::NetDevice> arg0) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::NetDevice >', 'arg0')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Const_ns3Address___amp___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::Socket >, ns3::Address const &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, const ns3::Address &, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::Socket> arg0, ns3::Address const & arg1) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::Socket >', 'arg0'), param('ns3::Address const &', 'arg1')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::Socket >, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::Socket> arg0) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::Socket >', 'arg0')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
-    return
-
-def register_Ns3CallbackImpl__Void_Ns3Ptr__lt__ns3Socket__gt___Unsigned_int_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_Ns3Empty_methods(root_module, cls):
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl() [constructor]
-    cls.add_constructor([])
-    ## callback.h (module 'core'): ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::CallbackImpl(ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty> const & arg0) [constructor]
-    cls.add_constructor([param('ns3::CallbackImpl< void, ns3::Ptr< ns3::Socket >, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty > const &', 'arg0')])
-    ## callback.h (module 'core'): static std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::DoGetTypeid() [member function]
-    cls.add_method('DoGetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_static=True)
-    ## callback.h (module 'core'): std::string ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::GetTypeid() const [member function]
-    cls.add_method('GetTypeid', 
-                   'std::string', 
-                   [], 
-                   is_const=True, is_virtual=True)
-    ## callback.h (module 'core'): void ns3::CallbackImpl<void, ns3::Ptr<ns3::Socket>, unsigned int, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty, ns3::empty>::operator()(ns3::Ptr<ns3::Socket> arg0, unsigned int arg1) [member operator]
-    cls.add_method('operator()', 
-                   'void', 
-                   [param('ns3::Ptr< ns3::Socket >', 'arg0'), param('unsigned int', 'arg1')], 
-                   is_pure_virtual=True, is_virtual=True, custom_name=u'__call__')
     return
 
 def register_Ns3QueueDiscItem_methods(root_module, cls):
