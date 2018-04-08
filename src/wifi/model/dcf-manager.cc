@@ -141,10 +141,7 @@ void
 DcfManager::SetupPhyListener (Ptr<WifiPhy> phy)
 {
   NS_LOG_FUNCTION (this << phy);
-  if (m_phyListener != 0)
-    {
-      delete m_phyListener;
-    }
+  NS_ASSERT (m_phyListener == 0);
   m_phyListener = new PhyListener (this);
   phy->RegisterListener (m_phyListener);
 }
@@ -206,52 +203,18 @@ DcfManager::Add (Ptr<DcfState> dcf)
 Time
 DcfManager::MostRecent (Time a, Time b) const
 {
-  NS_LOG_FUNCTION (this << a << b);
   return Max (a, b);
-}
-
-Time
-DcfManager::MostRecent (Time a, Time b, Time c) const
-{
-  NS_LOG_FUNCTION (this << a << b << c);
-  Time retval;
-  retval = Max (a, b);
-  retval = Max (retval, c);
-  return retval;
-}
-
-Time
-DcfManager::MostRecent (Time a, Time b, Time c, Time d) const
-{
-  NS_LOG_FUNCTION (this << a << b << c << d);
-  Time e = Max (a, b);
-  Time f = Max (c, d);
-  Time retval = Max (e, f);
-  return retval;
-}
-
-Time
-DcfManager::MostRecent (Time a, Time b, Time c, Time d, Time e, Time f) const
-{
-  NS_LOG_FUNCTION (this << a << b << c << d << e << f);
-  Time g = Max (a, b);
-  Time h = Max (c, d);
-  Time i = Max (e, f);
-  Time k = Max (g, h);
-  Time retval = Max (k, i);
-  return retval;
 }
 
 Time
 DcfManager::MostRecent (Time a, Time b, Time c, Time d, Time e, Time f, Time g) const
 {
-  NS_LOG_FUNCTION (this << a << b << c << d << e << f << g);
-  Time h = Max (a, b);
-  Time i = Max (c, d);
-  Time j = Max (e, f);
-  Time k = Max (h, i);
-  Time l = Max (j, g);
-  Time retval = Max (k, l);
+  Time h = MostRecent (a, b);
+  Time i = MostRecent (c, d);
+  Time j = MostRecent (e, f);
+  Time k = MostRecent (h, i);
+  Time l = MostRecent (j, g);
+  Time retval = MostRecent (k, l);
   return retval;
 }
 
@@ -390,10 +353,10 @@ DcfManager::DoGrantAccess (void)
            * the result of the calculations.
            */
           state->NotifyAccessGranted ();
-          for (std::vector<Ptr<DcfState> >::iterator k = internalCollisionStates.begin ();
-               k != internalCollisionStates.end (); k++)
+          for (std::vector<Ptr<DcfState> >::iterator l = internalCollisionStates.begin ();
+               l != internalCollisionStates.end (); l++)
             {
-              (*k)->NotifyInternalCollision ();
+              (*l)->NotifyInternalCollision ();
             }
           break;
         }

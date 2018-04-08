@@ -438,20 +438,6 @@ public:
   */
   uint8_t GetBssMembershipSelector (uint8_t selector) const;
   /**
-   * The WifiPhy::GetMembershipSelectorModes() method is used
-   * (e.g., by a WifiRemoteStationManager) to determine the set of
-   * transmission/reception modes that this WifiPhy(-derived class)
-   * can support - a set of WifiMode objects which we call the
-   * BssMembershipSelectorSet, and which is stored as WifiPhy::m_bssMembershipSelectorSet.
-   *
-   * \param selector index in array of supported memberships
-   *
-   * \return a WifiModeList that contains the WifiModes associrated with the selected index.
-   *
-   * \sa WifiPhy::GetMembershipSelectorModes()
-   */
-  WifiModeList GetMembershipSelectorModes (uint32_t selector);
-  /**
    * The WifiPhy::GetNMcs() method is used
    * (e.g., by a WifiRemoteStationManager) to determine the set of
    * transmission/reception MCS indexes that this WifiPhy(-derived class)
@@ -1238,12 +1224,6 @@ public:
    */
   double GetEdThreshold (void) const;
   /**
-   * Return the energy detection threshold.
-   *
-   * \return the energy detection threshold.
-   */
-  double GetEdThresholdW (void) const;
-  /**
    * Sets the CCA threshold (dBm). The energy of a received signal
    * should be higher than this threshold to allow the PHY
    * layer to declare CCA BUSY state.
@@ -1263,12 +1243,6 @@ public:
    * \param noiseFigureDb noise figure in dB
    */
   void SetRxNoiseFigure (double noiseFigureDb);
-  /**
-   * Return the RX noise figure (dBm).
-   *
-   * \return the RX noise figure in dBm
-   */
-  double GetRxNoiseFigure (void) const;
   /**
    * Sets the minimum available transmission power level (dBm).
    *
@@ -1473,25 +1447,11 @@ public:
    */
   void SetErrorRateModel (const Ptr<ErrorRateModel> rate);
   /**
-   * Return the error rate model this PHY is using.
-   *
-   * \return the error rate model this PHY is using
-   */
-  Ptr<ErrorRateModel> GetErrorRateModel (void) const;
-
-  /**
    * Sets the frame capture model.
    *
    * \param frameCaptureModel the frame capture model
    */
   void SetFrameCaptureModel (const Ptr<FrameCaptureModel> frameCaptureModel);
-  /**
-   * Return the frame capture model this PHY is using.
-   *
-   * \return the frame capture model this PHY is using
-   */
-  Ptr<FrameCaptureModel> GetFrameCaptureModel (void) const;
-
   /**
    * Sets the wifi radio energy model.
    *
@@ -1812,14 +1772,14 @@ private:
 
   std::vector<uint8_t> m_bssMembershipSelectorSet; //!< the BSS membership selector set
 
-  WifiPhyStandard m_standard;     //!< WifiPhyStandard
-  bool m_isConstructed;                //!< true when ready to set frequency
-  uint16_t m_channelCenterFrequency;   //!< Center frequency in MHz
-  uint16_t m_initialFrequency;         //!< Store frequency until initialization
+  WifiPhyStandard m_standard;               //!< WifiPhyStandard
+  bool m_isConstructed;                     //!< true when ready to set frequency
+  uint16_t m_channelCenterFrequency;        //!< Center frequency in MHz
+  uint16_t m_initialFrequency;              //!< Store frequency until initialization
   bool m_frequencyChannelNumberInitialized; //!< Store initialization state
-  uint8_t m_channelWidth;             //!< Channel width
+  uint8_t m_channelWidth;                   //!< Channel width
 
-  double m_edThresholdW;          //!< Energy detection threshold in watts
+  double   m_edThresholdW;        //!< Energy detection threshold in watts
   double   m_ccaMode1ThresholdW;  //!< Clear channel assessment (CCA) threshold in watts
   double   m_txGainDb;            //!< Transmission gain (dB)
   double   m_rxGainDb;            //!< Reception gain (dB)
@@ -1827,11 +1787,11 @@ private:
   double   m_txPowerEndDbm;       //!< Maximum transmission power (dBm)
   uint8_t  m_nTxPower;            //!< Number of available transmission power levels
 
-  bool     m_ldpc;                  //!< Flag if LDPC is used
-  bool     m_stbc;                  //!< Flag if STBC is used
-  bool     m_greenfield;            //!< Flag if GreenField format is supported
-  bool     m_shortGuardInterval;    //!< Flag if HT/VHT short guard interval is supported
-  bool     m_shortPreamble;         //!< Flag if short PLCP preamble is supported
+  bool     m_ldpc;               //!< Flag if LDPC is used
+  bool     m_stbc;               //!< Flag if STBC is used
+  bool     m_greenfield;         //!< Flag if GreenField format is supported
+  bool     m_shortGuardInterval; //!< Flag if HT/VHT short guard interval is supported
+  bool     m_shortPreamble;      //!< Flag if short PLCP preamble is supported
 
   Time m_guardInterval; //!< Supported HE guard interval
 

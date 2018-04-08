@@ -157,12 +157,6 @@ InterferenceHelper::SetNoiseFigure (double value)
   m_noiseFigure = value;
 }
 
-double
-InterferenceHelper::GetNoiseFigure (void) const
-{
-  return m_noiseFigure;
-}
-
 void
 InterferenceHelper::SetErrorRateModel (const Ptr<ErrorRateModel> rate)
 {
@@ -461,7 +455,7 @@ InterferenceHelper::CalculatePlcpHeaderPer (Ptr<const InterferenceHelper::Event>
           //Case 3c: current with previous in HT-SIG or SIG-A
           else
             {
-              //Case 3bi: VHT or HE format
+              //Case 3ci: VHT or HE format
               if (preamble == WIFI_PREAMBLE_VHT || preamble == WIFI_PREAMBLE_HE_SU)
                 {
                   //SIG-A is sent using legacy OFDM modulation
@@ -472,7 +466,7 @@ InterferenceHelper::CalculatePlcpHeaderPer (Ptr<const InterferenceHelper::Event>
                                                     headerMode, txVector);
                   NS_LOG_DEBUG ("Case 3ci - previous with current in SIG-A: mode=" << headerMode << ", psr=" << psr);
                 }
-              //Case 3bii: HT mixed format or HT greenfield
+              //Case 3cii: HT mixed format or HT greenfield
               else
                 {
                   psr *= CalculateChunkSuccessRate (CalculateSnr (powerW,
@@ -605,7 +599,7 @@ InterferenceHelper::CalculatePlcpHeaderPer (Ptr<const InterferenceHelper::Event>
                                                               txVector.GetChannelWidth ()),
                                                 current - previous,
                                                 headerMode, txVector);
-              NS_LOG_DEBUG ("Case 3c - current with previous in L-SIG: mode=" << headerMode << ", psr=" << psr);
+              NS_LOG_DEBUG ("Case 4d - current with previous in L-SIG: mode=" << headerMode << ", psr=" << psr);
             }
         }
       //Case 5: previous is in the preamble works for all cases

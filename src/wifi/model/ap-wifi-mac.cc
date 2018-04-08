@@ -61,8 +61,7 @@ ApWifiMac::GetTypeId (void)
     .AddAttribute ("BeaconGeneration",
                    "Whether or not beacons are generated.",
                    BooleanValue (true),
-                   MakeBooleanAccessor (&ApWifiMac::SetBeaconGeneration,
-                                        &ApWifiMac::GetBeaconGeneration),
+                   MakeBooleanAccessor (&ApWifiMac::SetBeaconGeneration),
                    MakeBooleanChecker ())
     .AddAttribute ("EnableNonErpProtection", "Whether or not protection mechanism should be used when non-ERP STAs are present within the BSS."
                    "This parameter is only used when ERP is supported by the AP.",
@@ -86,8 +85,8 @@ ApWifiMac::ApWifiMac ()
   m_beaconDca->SetAifsn (1);
   m_beaconDca->SetMinCw (0);
   m_beaconDca->SetMaxCw (0);
-  m_beaconDca->SetLow (m_low);
-  m_beaconDca->SetManager (m_dcfManager);
+  m_beaconDca->SetMacLow (m_low);
+  m_beaconDca->SetDcfManager (m_dcfManager);
   m_beaconDca->SetTxMiddle (m_txMiddle);
 
   //Let the lower layers know that we are acting as an AP.
@@ -136,13 +135,6 @@ ApWifiMac::SetBeaconGeneration (bool enable)
       m_beaconEvent = Simulator::ScheduleNow (&ApWifiMac::SendOneBeacon, this);
     }
   m_enableBeaconGeneration = enable;
-}
-
-bool
-ApWifiMac::GetBeaconGeneration (void) const
-{
-  NS_LOG_FUNCTION (this);
-  return m_enableBeaconGeneration;
 }
 
 Time
@@ -479,7 +471,6 @@ ApWifiMac::GetEdcaParameterSet (void) const
       edcaParameters.SetBeCWmax (edca->GetMaxCw ());
       edcaParameters.SetBeAifsn (edca->GetAifsn ());
       edcaParameters.SetBeTXOPLimit (txopLimit.GetMicroSeconds () / 32);
-      edcaParameters.SetBeAcm (0);
 
       edca = m_edca.find (AC_BK)->second;
       txopLimit = edca->GetTxopLimit ();
@@ -488,7 +479,6 @@ ApWifiMac::GetEdcaParameterSet (void) const
       edcaParameters.SetBkCWmax (edca->GetMaxCw ());
       edcaParameters.SetBkAifsn (edca->GetAifsn ());
       edcaParameters.SetBkTXOPLimit (txopLimit.GetMicroSeconds () / 32);
-      edcaParameters.SetBkAcm (0);
 
       edca = m_edca.find (AC_VI)->second;
       txopLimit = edca->GetTxopLimit ();
@@ -497,7 +487,6 @@ ApWifiMac::GetEdcaParameterSet (void) const
       edcaParameters.SetViCWmax (edca->GetMaxCw ());
       edcaParameters.SetViAifsn (edca->GetAifsn ());
       edcaParameters.SetViTXOPLimit (txopLimit.GetMicroSeconds () / 32);
-      edcaParameters.SetViAcm (0);
 
       edca = m_edca.find (AC_VO)->second;
       txopLimit = edca->GetTxopLimit ();
@@ -506,7 +495,6 @@ ApWifiMac::GetEdcaParameterSet (void) const
       edcaParameters.SetVoCWmax (edca->GetMaxCw ());
       edcaParameters.SetVoAifsn (edca->GetAifsn ());
       edcaParameters.SetVoTXOPLimit (txopLimit.GetMicroSeconds () / 32);
-      edcaParameters.SetVoAcm (0);
 
       edcaParameters.SetQosInfo (0);
     }
@@ -736,7 +724,7 @@ ApWifiMac::SendAssocResp (Mac48Address to, bool success, bool isReassoc)
   if (success)
     {
       code.SetSuccess ();
-      uint16_t aid;
+      uint16_t aid = 0;
       bool found = false;
       if (isReassoc)
         {

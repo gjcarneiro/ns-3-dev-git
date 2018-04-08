@@ -867,7 +867,7 @@ MinstrelHtWifiManager::DoGetDataTxVector (WifiRemoteStation *st)
 
       uint32_t rateId = GetRateId (station->m_txrate);
       uint32_t groupId = GetGroupId (station->m_txrate);
-      uint32_t mcsIndex = station->m_groupsTable[groupId].m_ratesTable[rateId].mcsIndex;
+      uint8_t mcsIndex = station->m_groupsTable[groupId].m_ratesTable[rateId].mcsIndex;
 
       NS_LOG_DEBUG ("DoGetDataMode rateId= " << rateId << " groupId= " << groupId << " mode= " << GetMcsSupported (station, mcsIndex));
 
@@ -927,7 +927,7 @@ MinstrelHtWifiManager::DoGetRtsTxVector (WifiRemoteStation *st)
       // As we are in Minstrel HT, assume the last rate was an HT rate.
       uint32_t rateId = GetRateId (station->m_txrate);
       uint32_t groupId = GetGroupId (station->m_txrate);
-      uint32_t mcsIndex = station->m_groupsTable[groupId].m_ratesTable[rateId].mcsIndex;
+      uint8_t mcsIndex = station->m_groupsTable[groupId].m_ratesTable[rateId].mcsIndex;
 
       WifiMode lastRate = GetMcsSupported (station, mcsIndex);
       uint64_t lastDataRate = lastRate.GetNonHtReferenceRate ();
@@ -1232,7 +1232,7 @@ MinstrelHtWifiManager::UpdateStats (MinstrelHtWifiRemoteStation *station)
                 {
                   station->m_groupsTable[j].m_ratesTable[i].retryUpdated = false;
 
-                  NS_LOG_DEBUG (i << " " << GetMcsSupported (station,  station->m_groupsTable[j].m_ratesTable[i].mcsIndex) <<
+                  NS_LOG_DEBUG (i << " " << GetMcsSupported (station, station->m_groupsTable[j].m_ratesTable[i].mcsIndex) <<
                                 "\t attempt=" << station->m_groupsTable[j].m_ratesTable[i].numRateAttempt <<
                                 "\t success=" << station->m_groupsTable[j].m_ratesTable[i].numRateSuccess);
 
@@ -1497,7 +1497,7 @@ MinstrelHtWifiManager::RateInit (MinstrelHtWifiRemoteStation *station)
 
                   ///Use the McsValue as the index in the rate table.
                   ///This way, MCSs not supported are not initialized.
-                  uint32_t rateId = mode.GetMcsValue ();
+                  uint8_t rateId = mode.GetMcsValue ();
                   if (mode.GetModulationClass () == WIFI_MOD_CLASS_HT)
                     {
                       rateId %= MAX_HT_GROUP_RATES;
@@ -1553,7 +1553,6 @@ void
 MinstrelHtWifiManager::CalculateRetransmits (MinstrelHtWifiRemoteStation *station, uint32_t groupId, uint32_t rateId)
 {
   NS_LOG_FUNCTION (this << station << groupId << groupId);
-  NS_LOG_DEBUG (" Calculating the number of retries");
 
   uint32_t cw = 15;                     // Is an approximation.
   uint32_t cwMax = 1023;
@@ -1615,8 +1614,7 @@ MinstrelHtWifiManager::CalculateEwmsd (double oldEwmsd, double currentProb, doub
 void
 MinstrelHtWifiManager::InitSampleTable (MinstrelHtWifiRemoteStation *station)
 {
-  NS_LOG_DEBUG ("InitSampleTable=" << this);
-
+  NS_LOG_FUNCTION (this << station);
   station->m_col = station->m_index = 0;
 
   //for off-setting to make rates fall between 0 and nModes
@@ -1647,9 +1645,6 @@ MinstrelHtWifiManager::InitSampleTable (MinstrelHtWifiRemoteStation *station)
 void
 MinstrelHtWifiManager::PrintTable (MinstrelHtWifiRemoteStation *station)
 {
-  NS_LOG_FUNCTION (this << station);
-  NS_LOG_DEBUG ("PrintTable=" << station);
-
   station->m_statsFile << "               best   ____________rate__________    ________statistics________    ________last_______    ______sum-of________\n" <<
     " mode guard #  rate  [name   idx airtime  max_tp]  [avg(tp) avg(prob) sd(prob)]  [prob.|retry|suc|att]  [#success | #attempts]\n";
   for (uint8_t i = 0; i < m_numGroups; i++)
