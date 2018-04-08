@@ -15,7 +15,7 @@ from waflib.Errors import WafError
 
 # https://github.com/gjcarneiro/pybindgen
 REQUIRED_PYBINDGEN_VERSION = '0.17.0.post58+ngcf00cc0'
-REQUIRED_PYGCCXML_VERSION = (1, 9, 0)
+REQUIRED_PYGCCXML_VERSION = "ver > num(1, 8, 0)"
 REQUIRED_CASTXML_VERSION = '0.1'
 
 RUN_ME = -3
@@ -235,16 +235,13 @@ int main ()
     try:
         conf.check_python_module(
             'pygccxml',
-            condition="ver > num(1, 8, 0) and ver <= num(1, 9, 0)")
-    except Errors.ConfigurationError:
-        conf.report_optional_feature("castxml", "Python API Scanning Support", False,
-                                     "Missing 'pygccxml' Python module")
-        return
-    try:
+            condition=REQUIRED_PYGCCXML_VERSION)
         conf.check_python_module('cxxfilt')
     except Errors.ConfigurationError:
-        conf.report_optional_feature("castxml", "Python API Scanning Support", False,
-                                     "Missing 'pygccxml' Python module")
+        conf.report_optional_feature("castxml", "Python API Scanning Support",
+                                     False,
+                                     "Missing pygccxml or cxxfilt Python "
+                                     "module, or wrong version")
         return
 
     ## Check castxml version

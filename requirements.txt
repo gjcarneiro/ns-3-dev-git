@@ -1,0 +1,4 @@
+cxxfilt==0.1.0
+pkg-resources==0.0.0
+-e git+git@github.com:gjcarneiro/pybindgen.git@70b13acdeba3e617dd5a7df8322450f0002acc2c#egg=PyBindGen
+pygccxml==1.9.1
